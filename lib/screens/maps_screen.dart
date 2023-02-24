@@ -6,6 +6,8 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:maps/constants.dart';
+import 'package:maps/main.dart';
+import 'package:maps/screens/splash_screen.dart';
 
 
 class OrderTrackingPage extends StatefulWidget {
@@ -98,17 +100,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage> {
     return Container(
       color: Colors.white,
       child: currentLocation==null
-            ? Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text("Loading...",style: TextStyle(fontSize: 20, color: primaryColor, fontWeight: FontWeight.bold),),
-                SizedBox(height: 10,),
-                CircularProgressIndicator(
-          color: primaryColor,
-          strokeWidth: 5,
-        ),
-              ],
-            ),)
+            ? SplashScreenMaps()
             :GoogleMap(
               compassEnabled: true,
               mapType: MapType.hybrid,

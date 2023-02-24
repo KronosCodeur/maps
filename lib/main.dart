@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
 import 'package:maps/screens/home_screen.dart';
 import 'package:maps/screens/hotels_screen.dart';
 import 'package:maps/screens/maps_screen.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         /*visualDensity: VisualDensity.adaptivePlatformDensity,*/
       ),
-      home: MyHomePage(title: 'GoodTrips'),
+      home: SplashScreen(),
     );
   }
 }
@@ -156,8 +157,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
       extendBodyBehindAppBar: true,
       extendBody:true,
-      body: Expanded(child: screenList[screenIndex]),
+      body: screenList[screenIndex],
       floatingActionButton: FloatingActionButton(
+        focusColor: Colors.white,
         backgroundColor: HexColor('#ffd700'),
         child: Icon(
           Icons.map_rounded,
@@ -178,8 +180,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           return Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
+            children: [              Icon(
                 iconList[index],
                 size: 30,
                 color: color,
@@ -223,5 +224,38 @@ class HexColor extends Color {
       hexColor = 'FF' + hexColor;
     }
     return int.parse(hexColor, radix: 16);
+  }
+}
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration(seconds: 10)).then((value) => Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => MyHomePage(title: 'Goodtrips',))));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Container(
+            height: 400.0,
+            width: 200.0,
+            child: Column(
+              children: [
+                LottieBuilder.asset('assets/mapanimation.json'),
+                Text("Good Trips", style: TextStyle(color: HexColor('#115173'), fontSize: 30, fontWeight: FontWeight.bold),),
+              ],
+            )),
+      ),
+    );
   }
 }

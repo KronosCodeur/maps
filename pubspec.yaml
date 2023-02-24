@@ -45,6 +45,13 @@ dependencies:
   flutter_animated_icons: ^1.0.1
   circular_reveal_animation: ^2.0.1
   auto_size_text: ^3.0.0
+  lottie: ^1.4.3
+  http: ^0.13.5
+  fab_circular_menu: ^1.0.2
+  flutter_rating_stars: ^1.0.3+4
+  flip_card: ^0.7.0
+  dartz: ^0.10.1
+  flutter_riverpod: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -98,4 +105,9 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
+    - assets/126612-map-icon-lottie-json-animation.json
+    - assets/7213-lap.json
+    - assets/78072-map-pin-location.json
+    - assets/99546-loupe-on-map.json
+    - assets/mapanimation.json
     - assets/touristic_sites.json
