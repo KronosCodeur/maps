@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:lottie/lottie.dart';
 import 'package:maps/screens/home_screen.dart';
 import 'package:maps/screens/hotels_screen.dart';
 import 'package:maps/screens/maps_screen.dart';
 import 'package:maps/screens/restaurants_screen.dart';
+import 'package:maps/screens/splash_screen.dart';
 import 'package:maps/widgets/hotels_app_bar.dart';
 import 'package:maps/widgets/sites_app_bar.dart';
 
-import 'screens/sites_screen.dart';
+import 'screens/traditions_screen.dart';
 import 'widgets/home_app_bar.dart';
 import 'widgets/maps_app_bar.dart';
 import 'widgets/restaurant_app_bar.dart';
@@ -59,14 +59,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     FontAwesomeIcons.houseChimney,
     Icons.hotel,
     Icons.restaurant,
-    Icons.travel_explore_sharp,
+    Icons.houseboat_outlined,
   ];
   int screenIndex=0;
-  final screenList = <Widget> [
+  final screenList = <Widget>[
     HomeScreen(),
     HotelsScreen(),
     RestaurantsScreen(),
-    SitesScreen(),
+    TraditionsScreen(),
     OrderTrackingPage(),
   ];
   final appbarlist = <Widget> [
@@ -77,10 +77,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     MapAppBar(),
   ];
   final itemList = <String>[
-    "Home",
+    "Accueil",
     "Hotels",
     "Restaurants",
-    "Sites",
+    "Traditions",
   ];
 
   @override
@@ -224,38 +224,5 @@ class HexColor extends Color {
       hexColor = 'FF' + hexColor;
     }
     return int.parse(hexColor, radix: 16);
-  }
-}
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
-
-  @override
-  _SplashScreenState createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Future.delayed(Duration(seconds: 10)).then((value) => Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => MyHomePage(title: 'Goodtrips',))));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-            height: 400.0,
-            width: 200.0,
-            child: Column(
-              children: [
-                LottieBuilder.asset('assets/mapanimation.json'),
-                Text("Good Trips", style: TextStyle(color: HexColor('#115173'), fontSize: 30, fontWeight: FontWeight.bold),),
-              ],
-            )),
-      ),
-    );
   }
 }

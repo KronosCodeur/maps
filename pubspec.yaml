@@ -52,6 +52,8 @@ dependencies:
   flip_card: ^0.7.0
   dartz: ^0.10.1
   flutter_riverpod: ^2.2.0
+  carousel_slider: ^4.2.1
+  google_fonts: ^4.0.3
 
 dev_dependencies:
   flutter_test:
@@ -111,3 +113,4 @@ flutter:
     - assets/99546-loupe-on-map.json
     - assets/mapanimation.json
     - assets/touristic_sites.json
+    - assets/
